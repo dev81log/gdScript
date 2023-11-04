@@ -1,16 +1,13 @@
 extends CharacterBody2D
 
-
 @onready var texture: Sprite2D = get_node("Texture")
 @onready var animation: AnimationPlayer = get_node("Animation")
 @onready var animation_aux: AnimationPlayer = get_node("AnimationAux")
 @onready var attack_area_collision: CollisionShape2D = get_node("AttackArea/Collision")
 
-
 @export var health: int = 10
 @export var move_speed: float = 256.0
 @export var attack_damage: int = 1
-
 
 var can_attack: bool = true
 var can_die: bool = false
@@ -36,10 +33,10 @@ func move(direction: Vector2) -> void:
 
 
 func get_direction() -> Vector2:
-	return Vector2(
-		Input.get_axis("move_left", "move_right"),
-		Input.get_axis("move_up", "move_down")
-	).normalized()
+	return (
+		Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
+		. normalized()
+	)
 
 
 func animate() -> void:
@@ -88,6 +85,3 @@ func update_health(value: int) -> void:
 		return
 
 	animation_aux.play("hit")
-
-
-
