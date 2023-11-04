@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 var can_attack: bool = true
 var can_die: bool = false
+var player_ref: CharacterBody2D = null
 
 
 func _physics_process(_delta: float) -> void:
